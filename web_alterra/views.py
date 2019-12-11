@@ -33,6 +33,10 @@ def save_new_content(request):
     b.save()
 
     blogs = Blog.objects.all()
+
+    for blog in blogs:
+        blog.text_content = blog.text_content[0:500]
+        
     return render(request,'web_alterra/blog.html', {'blogs': blogs}) 
 
 def readmore(request, blog_id):
