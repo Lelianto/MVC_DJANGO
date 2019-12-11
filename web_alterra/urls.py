@@ -9,7 +9,8 @@ urlpatterns = [
     path('mentee', views.mentee, name='mentee'),
     path('author', views.author, name='author'),
     path('content_blog', views.content_blog, name='content_blog'),
-    path('save_new_content', views.save_new_content, name='save_new_content')
+    path('save_new_content', views.save_new_content, name='save_new_content'),
+    path('web_alterra/<int:blog_id>', views.readmore, name='readmore')
 ]
 
 

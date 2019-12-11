@@ -5,12 +5,11 @@
                 <a href="content_blog" >Submit New Article</a>
             </p>
         </div>
+        {% for blog in blogs %}
         <div class="container left-right-container">
             <div class="row">
                 <div class="col-md-12 body-blog-content">
-
-                {% for blog in blogs %}
-                    <div class="body-blog-content-row">
+                    <div class="body-blog-content-row ">
                         <img src="{{blog.img_blog_url}}" alt="" class="blog-content-img">
                         <p>{{blog.date_post}}</p>
                         <div class="article-title">{{blog.title}}</div>
@@ -19,12 +18,12 @@
                             {{blog.text_content}}
                         </article>
                         </div>
-                        <div><a href="">Baca Selengkapnya</a></div>
+                        <div><a href="{% url 'web_alterra:readmore' blog.id %}">Baca Selengkapnya</a></div>
                     </div>
-                {% endfor %}
                 </div>    
             </div>    
-        </div>                  
+        </div>   
+        {% endfor %}               
     </section>
     {% include 'web_alterra/footer.html' %}
 </body>

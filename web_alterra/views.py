@@ -8,6 +8,10 @@ def home(request):
     return render(request, 'web_alterra/home.html', {})
 def blog(request):
     blogs = Blog.objects.all()
+
+    for blog in blogs:
+        blog.text_content = blog.text_content[0:500]
+
     return render(request, 'web_alterra/blog.html', {'blogs':blogs})
 def mentee(request):
     mentees = Mentee.objects.all()
@@ -30,6 +34,12 @@ def save_new_content(request):
 
     blogs = Blog.objects.all()
     return render(request,'web_alterra/blog.html', {'blogs': blogs}) 
+
+def readmore(request, blog_id):
+    blog = Blog.objects.get(pk=blog_id)
+
+    return render(request, 'web_alterra/complete_blog.html', {'blog':blog})
+
 
     
 
